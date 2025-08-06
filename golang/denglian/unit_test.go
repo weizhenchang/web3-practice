@@ -1,6 +1,8 @@
 package denglian
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestQ1(t *testing.T) {
 	q1()
@@ -8,4 +10,8 @@ func TestQ1(t *testing.T) {
 
 func TestQ2(t *testing.T) {
 	q2()
+}
+
+func TestQ3(t *testing.T) {
+	q3()
 }
