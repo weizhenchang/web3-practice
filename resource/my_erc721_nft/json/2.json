@@ -1,0 +1,28 @@
+{
+    "name": "Mountain King NFT",
+    "description": "The Mountain Kings, or 'Thanes' as they are known in Khaz Modan, are the mightiest Dwarven warriors under the mountain. Wielding both enchanted warhammers and hand axes, these fierce fighters live to test themselves against worthy opponents and are dedicated to safeguarding the Alliance which saved their kingdom during the Second War.",
+    "image": "ipfs://bafybeignsvvbcjefbn4js36m2qn7cqafv7dwhcnzmneznm3jmbrppcbgbm",
+    "external_url": "https://blz-contentstack-images.akamaized.net/v3/assets/blt0e00eb71333df64e/bltfadc2f894eafc647/67329471ac6f71172154127e/media_gallery_hd_screenshot_01.webp?",
+    "attributes": [
+        {
+            "trait_type": "Primary Attribute",
+            "value": "Strength"
+        },
+        {
+            "trait_type": "Strength",
+            "value": "24 (+3/level)"
+        },
+        {
+            "trait_type": "Agility",
+            "value": "11 (+1.5/level)"
+        },
+        {
+            "trait_type": "Intelligence",
+            "value": "15 (+1.5/level)"
+        },
+        {
+            "trait_type": "Abilities",
+            "value": "Storm Bolt, Thunder Clap, Bash, Avatar"
+        }
+    ]
+}

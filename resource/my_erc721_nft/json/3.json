@@ -1,0 +1,28 @@
+{
+    "name": "Death Knight NFT",
+    "description": "Death Knights were once virtuous defenders of Humanity, but were corrupted by the Lich King and lured to his dark standard. They were given untold power and immortality in exchange for their loyalties, retaining their humanity but with twisted souls bound to the Lich King's will. Bestowed with black, vampiric runeblades and shadowy steeds, Death Knights serve as the Scourge's mightiest generals.",
+    "image": "ipfs://bafybeia4ah36urxu5yz2o6ipm3cfgk427kmm4k4csmyewk3an5k3yepwim",
+    "external_url": "https://blz-contentstack-images.akamaized.net/v3/assets/blt0e00eb71333df64e/bltef006ee811c53cce/673293d37e4dc16d012fcee8/media_gallery_hd_screenshot_03.webp?",
+    "attributes": [
+        {
+            "trait_type": "Primary Attribute",
+            "value": "Strength"
+        },
+        {
+            "trait_type": "Strength",
+            "value": "23 (+2.7/level)"
+        },
+        {
+            "trait_type": "Agility",
+            "value": "12 (+1.5/level)"
+        },
+        {
+            "trait_type": "Intelligence",
+            "value": "17 (+1.8/level)"
+        },
+        {
+            "trait_type": "Abilities",
+            "value": "Death Coil, Death Pact, Unholy Aura, Animate Dead"
+        }
+    ]
+}

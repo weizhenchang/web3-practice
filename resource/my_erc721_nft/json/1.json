@@ -1,0 +1,28 @@
+{
+    "name": "Demon Hunter NFT",
+    "description": "Demon Hunters are dark, shadowy warriors who are shunned by the greater night elf society. They made a pact to fight against the forces of chaos using its own terrible powers. They ritually blind themselves to develop 'spectral sight' for seeing demons and undead clearly, wield demonically charged warblades, and call upon demonic energies to augment their combat skills. They are mighty warriors but often maligned for their pact with darkness.",
+    "image": "ipfs://bafybeifkfiarpzivvbbus2d4lhj7h5u6f2ezqmgdflchebbj2uzd6socw4",
+    "external_url": "https://blz-contentstack-images.akamaized.net/v3/assets/blt0e00eb71333df64e/blt6c01fd09affeb44d/673294ba4210e80f1f19bf8d/sentials_vs_undead_keyart.webp?",
+    "attributes": [
+        {
+            "trait_type": "Primary Attribute",
+            "value": "Agility"
+        },
+        {
+            "trait_type": "Strength",
+            "value": "19 (+2.4/level)"
+        },
+        {
+            "trait_type": "Agility",
+            "value": "21 (+1.5/level)"
+        },
+        {
+            "trait_type": "Intelligence",
+            "value": "16 (+2.1/level)"
+        },
+        {
+            "trait_type": "Abilities",
+            "value": "Mana Burn, Immolation, Evasion, Metamorphosis"
+        }
+    ]
+}
