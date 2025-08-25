@@ -7,6 +7,7 @@
 [submodule "lib/solmate"]
 	path = lib/solmate
 	url = https://github.com/transmissions11/solmate
+	branch = v7
 [submodule "solidity/denglian/foundry/hello_foundry/lib/solmate"]
 	path = solidity/denglian/foundry/hello_foundry/lib/solmate
 	url = https://github.com/transmission11/solmate
