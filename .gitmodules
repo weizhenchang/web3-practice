@@ -1,13 +1,3 @@
-[submodule "solidity/denglian/foundry/hello_foundry/lib/forge-std"]
-	path = solidity/denglian/foundry/hello_foundry/lib/forge-std
-	url = https://github.com/foundry-rs/forge-std
-[submodule "solidity/denglian/foundry/WETH9/lib/forge-std"]
-	path = solidity/denglian/foundry/WETH9/lib/forge-std
-	url = https://github.com/foundry-rs/forge-std
-[submodule "lib/solmate"]
-	path = lib/solmate
-	url = https://github.com/transmissions11/solmate
-	branch = v7
-[submodule "solidity/denglian/foundry/hello_foundry/lib/solmate"]
-	path = solidity/denglian/foundry/hello_foundry/lib/solmate
-	url = https://github.com/transmission11/solmate
+[submodule "solidity/denglian/foundry/hello_foundry"]
+	path = solidity/denglian/foundry/hello_foundry
+	url = ./solidity/denglian/foundry/hello_foundry
