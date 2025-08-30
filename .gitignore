@@ -3,4 +3,5 @@
 
 solidity/denglian/foundry/*/cache/
 solidity/denglian/foundry/*/out/
+solidity/denglian/foundry/*/broadcast/
 solidity/denglian/foundry/*/.env
