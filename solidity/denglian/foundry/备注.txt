@@ -1,0 +1,7 @@
+初始化项目:
+cd /Users/weizhenchang/Code/web3-practice/solidity/denglian/foundry
+forge init hello_foundry --no-git
+
+安装依赖:
+cd hello_foundry
+forge install foundry-rs/forge-std --no-git

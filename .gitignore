@@ -1,0 +1,6 @@
+.DS_Store
+.vscode/
+
+solidity/denglian/foundry/*/cache/
+solidity/denglian/foundry/*/out/
+solidity/denglian/foundry/*/.env
