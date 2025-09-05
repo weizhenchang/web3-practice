@@ -1,0 +1,124 @@
+// 上架NFT：测试上架成功的情况，要求断言错误信息和上架事件。
+forge test --match-test testListNFTSuccess -vv         
+[⠊] Compiling...
+[⠔] Compiling 1 files with Solc 0.8.25
+[⠒] Solc 0.8.25 finished in 1.50s
+Compiler run successful!
+
+Ran 1 test for test/NftMarket.t.sol:NFTMarketTest
+[PASS] testListNFTSuccess() (gas: 197894)
+Logs:
+  goodsId:  1
+  goodsSeller:  0xDFa97bfe5d2b2E8169b194eAA78Fbb793346B174
+  goodsNftContract:  0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  goodsTokenId:  1
+  goodsPrice:  100000000000000000000
+  isActive:  true
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 8.15ms (1.52ms CPU time)
+
+Ran 1 test suite in 298.00ms (8.15ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+
+
+
+// 上架NFT：测试上架失败的情况，要求断言错误信息和上架事件。
+forge test --match-test testListNFTFail -vv   
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for test/NftMarket.t.sol:NFTMarketTest
+[PASS] testListNFTFail() (gas: 40866)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 7.89ms (1.16ms CPU time)
+
+Ran 1 test suite in 334.08ms (7.89ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+
+
+
+// 购买NFT：测试购买成功
+forge test --match-test testBuyNFTSuccess -vv
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for test/NftMarket.t.sol:NFTMarketTest
+[PASS] testBuyNFTSuccess() (gas: 238610)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 7.56ms (976.92µs CPU time)
+
+Ran 1 test suite in 304.13ms (7.56ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+
+
+
+// 购买NFT：自己购买自己的NFT
+forge test --match-test testBuySelfNFT -vv   
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for test/NftMarket.t.sol:NFTMarketTest
+[PASS] testBuySelfNFT() (gas: 253422)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 7.03ms (681.38µs CPU time)
+
+Ran 1 test suite in 300.84ms (7.03ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+
+
+
+// 购买NFT：NFT被重复购买
+forge test --match-test testBuyNFTTwice -vv
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for test/NftMarket.t.sol:NFTMarketTest
+[PASS] testBuyNFTTwice() (gas: 232525)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 2.45ms (551.00µs CPU time)
+
+Ran 1 test suite in 299.63ms (2.45ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+
+
+
+// 购买NFT：支付Token过多
+forge test --match-test testBuyNFTGreaterThanPrice -vv
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for test/NftMarket.t.sol:NFTMarketTest
+[PASS] testBuyNFTGreaterThanPrice() (gas: 237187)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 3.12ms (1.30ms CPU time)
+
+Ran 1 test suite in 300.18ms (3.12ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+
+
+
+// 购买NFT：支付Token过少
+forge test --match-test testBuyNFTLessThanPrice -vv   
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for test/NftMarket.t.sol:NFTMarketTest
+[PASS] testBuyNFTLessThanPrice() (gas: 224250)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 7.20ms (984.17µs CPU time)
+
+Ran 1 test suite in 300.72ms (7.20ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+
+
+
+// 模糊测试：测试随机使用 0.01-10000 Token价格上架NFT，并随机使用任意Address购买NFT
+forge test --match-test testFuzzBuyNFT -vv         
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for test/NftMarket.t.sol:NFTMarketTest
+[PASS] testFuzzBuyNFT(uint256,address) (runs: 257, μ: 263183, ~: 263219)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 35.12ms (33.37ms CPU time)
+
+Ran 1 test suite in 292.67ms (35.12ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+
+
+
+// 「可选」不可变测试：测试无论如何买卖，NFTMarket合约中都不可能有 Token 持仓
+forge test --match-test testInvariantNoTokenBalance -vv
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for test/NftMarket.t.sol:NFTMarketTest
+[PASS] testInvariantNoTokenBalance() (gas: 571468)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 2.82ms (813.88µs CPU time)
+
+Ran 1 test suite in 298.33ms (2.82ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
