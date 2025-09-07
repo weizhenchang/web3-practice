@@ -6,8 +6,16 @@ forge init hello_foundry --no-git
 cd hello_foundry
 forge install foundry-rs/forge-std --no-git
 
-部署合约:
-forge script script/MyToken.s.sol --rpc-url sepolia --private-key $PRIVATE_KEY --broadcast
+sepolia测试网部署合约:
+    forge script script/MyToken.s.sol --rpc-url sepolia --private-key $PRIVATE_KEY --broadcast
+
+本地测试网部署合约:
+    forge script script/MyToken.s.sol --rpc-url local --private-key $LOCAL_PRIVATE_KEY --broadcast
+    Hash: 0xfcfd042c47e83d816236bcca87bd4cf057438c751d82676069f1b9c9fafa1abd
+    Contract Address: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+
+根据合约名生成对应的abi json文件
+    forge inspect MyToken abi --json >> MyToken.json
 
 验证合约:
 forge verify-contract \
