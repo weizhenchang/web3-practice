@@ -1,14 +1,23 @@
-import { createWalletClient, http, parseEther, parseGwei, type Hash, type TransactionReceipt } from 'viem'
-import { prepareTransactionRequest } from 'viem/actions'
-import { foundry } from 'viem/chains'
-import { createPublicClient, type PublicClient, type WalletClient } from 'viem'
-import { privateKeyToAccount } from 'viem/accounts'
-import { readFileSync } from 'fs'
-import { join } from 'path'
-import dotenv from 'dotenv'
-import { Wallet } from '@ethersproject/wallet'
+import { Wallet } from '@ethersproject/wallet'; // ethers.js 的钱包工具
+import dotenv from 'dotenv'; // 加载环境变量
+import { readFileSync } from 'fs'; // 读取文件
+import { join } from 'path'; // 路径拼接
+import {
+  createPublicClient, // 创建公共链客户端（只读）
+  createWalletClient, // 创建钱包客户端（可发起交易）
+  http, // HTTP连接
+  parseEther, // 把以太单位转为wei
+  parseGwei, // 把gwei单位转为wei
+  type Hash, // 交易哈希类型
+  type PublicClient, // 公共客户端类型
+  type TransactionReceipt, // 交易回执类型
+  type WalletClient // 钱包客户端类型
+} from 'viem';
+import { privateKeyToAccount } from 'viem/accounts'; // 私钥转账户
+import { prepareTransactionRequest } from 'viem/actions'; // 构建交易请求
+import { foundry } from 'viem/chains'; // 导入本地foundry链配置
 
-dotenv.config()
+dotenv.config() // 加载.env文件里的环境变量
 
 async function sendTransactionWithKeystore(): Promise<Hash> {
   try {
@@ -73,7 +82,7 @@ async function sendTransactionWithKeystore(): Promise<Hash> {
       chainId: foundry.id,
       type: 'eip1559' as const,
       chain: foundry,
-      
+
       // EIP-1559 交易参数
       maxFeePerGas: gasPrice * 2n,
       maxPriorityFeePerGas: parseGwei('1.5'),
