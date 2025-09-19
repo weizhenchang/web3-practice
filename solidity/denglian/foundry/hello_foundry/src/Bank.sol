@@ -12,10 +12,21 @@ pragma solidity ^0.8.0;
 
 contract Bank {
     uint8 public constant RANKINGS_LEN = 3; // 排行榜长度
-    address immutable owner = msg.sender; // 管理员地址
+    // address immutable owner = msg.sender; // 管理员地址
+    address public owner; // 管理员地址
     mapping(address => uint256) public balances; // 地址 => 余额 map
     address[RANKINGS_LEN] public rankings; // 存款金额前三名的地址 array
     uint256 public fallbackCount; // fallback函数的调用次数
+
+    constructor() {
+        owner = msg.sender; // 部署者为初始管理员
+    }
+
+    // 仅管理员可调用的修饰器
+    modifier onlyOwner() {
+        require(msg.sender == owner, "only owner");
+        _;
+    }
 
     // 充值
     receive() external payable {
@@ -28,9 +39,9 @@ contract Bank {
     }
 
     // 提取
-    function withdraw(uint amount) public {
-        // 仅管理员可以提取资金
-        require(msg.sender == owner, "only owner can withdraw");
+    function withdraw(uint amount) public onlyOwner {
+        // // 仅管理员可以提取资金
+        // require(msg.sender == owner, "only owner can withdraw");
         // 检查提取金额
         require(amount > 0, "amount require gt zero");
         require(amount <= address(this).balance, "balance not enough");
@@ -92,5 +103,11 @@ contract Bank {
         }
 
         rankings = newRankings;
+    }
+
+    // 管理员变更
+    function changeOwner(address newOwner) external onlyOwner {
+        require(newOwner != address(0), "new owner is zero");
+        owner = newOwner;
     }
 }
