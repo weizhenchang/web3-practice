@@ -1,29 +1,28 @@
+import dotenv from 'dotenv'; // 加载环境变量
 import {
-    http,
-    parseEther,
-    parseGwei
-} from 'viem'
+    combine, // Shamir 秘密分享算法：合成私钥
+    split // Shamir 秘密分享算法：分割私钥
+} from 'shamirs-secret-sharing';
 import {
-    foundry
-} from 'viem/chains'
+    createPublicClient, // 创建公共链客户端（只读）
+    createWalletClient, // 创建钱包客户端（可发起交易）
+    http, // HTTP 连接
+    parseEther, // 把以太单位转为wei
+    parseGwei // 把gwei单位转为wei
+} from 'viem';
 import {
-    createPublicClient,
-    createWalletClient
-} from 'viem'
+    privateKeyToAccount // 私钥转账户
+} from 'viem/accounts';
 import {
-    privateKeyToAccount
-} from 'viem/accounts'
-import {
-    split,
-    combine
-} from 'shamirs-secret-sharing'
-import dotenv from 'dotenv'
+    foundry // 导入本地 foundry 链配置
+} from 'viem/chains';
 
-dotenv.config()
+dotenv.config(); // 加载 .env 文件里的环境变量
 
 // 生成私钥分片
 function generatePrivateKeyShares(privateKey, totalShares, threshold) {
     // 将私钥转换为 Buffer
+    // privateKey.slice(2)作用是: 去掉私钥字符串前面的 "0x" 前缀
     const privateKeyBuffer = Buffer.from(privateKey.slice(2), 'hex')
 
     // 生成分片
@@ -41,7 +40,7 @@ function recoverPrivateKey(shares) {
     return '0x' + recoveredBuffer.toString('hex')
 }
 
-// 添加验证函数
+// 验证分片恢复正确性
 function verifyShares(shares, originalPrivateKey, threshold) {
     console.log('\n验证所有分片:')
     const allRecoveredKey = recoverPrivateKey(shares)
@@ -50,6 +49,7 @@ function verifyShares(shares, originalPrivateKey, threshold) {
     console.log('是否一致:', originalPrivateKey === allRecoveredKey)
 
     console.log('\n验证部分分片:')
+    // shares.slice(0, threshold)意思是：从 shares 数组中取前 threshold 个分片。
     const partialShares = shares.slice(0, threshold)
     const partialRecoveredKey = recoverPrivateKey(partialShares)
     console.log('使用部分分片恢复的私钥:', partialRecoveredKey)
@@ -78,6 +78,7 @@ async function mpcSignTransaction(shares, threshold, transaction) {
     return signedTx
 }
 
+// 主流程：用MPC分片签名并发送交易
 async function sendTransactionWithMPC() {
     try {
         // 1. 从环境变量获取私钥
@@ -130,8 +131,8 @@ async function sendTransactionWithMPC() {
         // 10. 构建交易参数
         const txParams = {
             account: account,
-            to: '0x01BF49D75f2b73A2FDEFa7664AEF22C86c5Be3df',
-            value: parseEther('0.001'),
+            to: '0x01BF49D75f2b73A2FDEFa7664AEF22C86c5Be3df', // 目标地址todo...
+            value: parseEther('0.001'), // 发送金额
             chainId: foundry.id,
             type: 'eip1559',
             chain: foundry,
@@ -141,18 +142,18 @@ async function sendTransactionWithMPC() {
             nonce: nonce,
         }
 
-        // 12. 使用 MPC 签名交易
+        // 11. 使用 MPC 签名交易
         console.log('开始 MPC 签名过程...')
         const signedTx = await mpcSignTransaction(shares, threshold, txParams)
         console.log('MPC 签名完成')
 
-        // 13. 发送交易
+        // 12. 发送交易
         const txHash = await publicClient.sendRawTransaction({
             serializedTransaction: signedTx
         })
         console.log('Transaction Hash:', txHash)
 
-        // 14. 等待交易确认
+        // 13. 等待交易确认
         const receipt = await publicClient.waitForTransactionReceipt({
             hash: txHash
         })

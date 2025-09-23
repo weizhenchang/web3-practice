@@ -9,7 +9,7 @@ import { foundry } from "viem/chains"; // 导入本地foundry链配置
 dotenv.config(); // 加载.env文件里的环境变量
 
 // 相关部署和操作
-// cd solidity/denglian/foundry/hello_foundry
+// cd /Users/weizhenchang/Code/web3-practice/solidity/denglian/foundry/hello_foundry
 // 部署 MyERC20V2 合约(0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9)
 // forge script script/MyERC20V2.s.sol --rpc-url local --private-key $LOCAL_PRIVATE_KEY --broadcast
 // 部署 NftMarket 合约(0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9)
