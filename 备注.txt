@@ -6,3 +6,5 @@
     Foundry/src/ERC20_Permit.sol
     FrontEnd/viem-front/app/page_permit.tsx(测试时把这个文件名改成page.tsx即可)
 
+视频课程进度:
+    https://learnblockchain.cn/video/play/1462?course_id=28
