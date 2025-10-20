@@ -1,0 +1,8 @@
+作业: https://decert.me/challenge/fc66ef6c-35db-4ee7-b11d-c3b2d3fa356a
+使用 EIP712 进行链下 Permit 和 白名单设计：
+
+参考答案:
+    Foundry/src/TokenBank_Permit.sol
+    Foundry/src/ERC20_Permit.sol
+    FrontEnd/viem-front/app/page_permit.tsx(测试时把这个文件名改成page.tsx即可)
+
